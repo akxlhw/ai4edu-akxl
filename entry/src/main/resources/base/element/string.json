@@ -55,6 +55,30 @@
     {
       "name": "page_placeholder",
       "value": "页面建设中（M3 实现）"
+    },
+    {
+      "name": "capture_guide",
+      "value": "把整页作业放入框内，避免阴影遮挡"
+    },
+    {
+      "name": "camera_denied_title",
+      "value": "需要相机权限才能拍照检查"
+    },
+    {
+      "name": "camera_denied_desc",
+      "value": "用于拍摄孩子的作业页面。也可以直接从相册选择照片。"
+    },
+    {
+      "name": "go_settings",
+      "value": "去设置"
+    },
+    {
+      "name": "use_album",
+      "value": "改从相册选择"
+    },
+    {
+      "name": "album_entry",
+      "value": "从相册选择"
     }
   ]
 }

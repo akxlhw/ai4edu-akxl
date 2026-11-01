@@ -40,6 +40,16 @@
   ```
 
   两个坑：hvigor 的 `PackageHap` 直接 spawn 裸 `java`，只认 PATH 不认 `JAVA_HOME`，所以两个变量都要设；`DEVECO_SDK_HOME` 未持久化到系统环境变量，跨会话需重新 export。
+
+### ArkTS 严格模式已知坑（实测踩过）
+
+- **UI 容器组件必须显式写括号**：`Row() { ... }`、`Column() { ... }`——省略括号的 `Row { ... }` 会被解析器拒绝，且引发**远离根因的大面积级联报错**（后续 @Builder 定义全部报"cannot be used in this place"）。排查此类级联时先找最早的 `';' expected` / `not callable` 错误。
+- 对象字面量只能用于有明确声明类型的场景；`Record` 字面量赋值会被拒（`arkts-no-untyped-obj-literals`），传参用 `Map` 或具名类。
+- `@kit.PerformanceKit` 在本 SDK 无映射，`hilog` 用 `import hilog from '@ohos.hilog'` 直导。
+- Camera Kit 用旧式命名：`getSupportedCameras()`、`CameraFormat.CAMERA_FORMAT_JPEG`、`QualityLevel.QUALITY_LEVEL_*`、`createSession<camera.PhotoSession>(camera.SceneMode.NORMAL_PHOTO)`（泛型）。
+- XComponent 事件是 `onLoad`/`onDestroy`（无 `onDelete`/`onSurfaceCreated` 属性回调）；surfaceId 经 `XComponentController.getXComponentSurfaceId()` 获取。
+- `Color.Black`（非 `Color.BLACK`）。
+- hvigor 构建日志 `.hvigor/outputs/build-logs/build.log` 是**追加式**，看错误要取文件末尾段，勿读开头旧段。
 - 产物为**未签名** HAP；调试签名与真机安装通过 DevEco Studio 自动签名（File > Project Structure > Signing Configs）。
 - 依赖管理：OHPM（`oh-package.json5` → `oh_modules/`）；测试框架 hypium + hamock。
 - 本地单测（`entry/src/test/`，已验证）：`hvigorw test --mode module -p module=entry@default --no-daemon`，结果文本在 `entry/.test/default/intermediates/test/coverage_data/test_result.txt`，HTML 报告在 `entry/.test/default/outputs/test/reports/`。真机仪器测试任务名为 `ohosTest`。新测试文件需在 `entry/src/test/List.test.ets` 的 `testsuite()` 中注册。
