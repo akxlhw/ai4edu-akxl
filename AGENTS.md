@@ -28,8 +28,20 @@
 
 ## 构建与验证
 
-- 本机 PATH 上没有 `hvigorw` / `devecocli` / `codelinter`，工程根目录也没有 hvigorw 包装脚本 —— 构建和真机运行通过 **DevEco Studio** 完成。设计文档中提到的 `devecocli check arkts`、`devecocli build` 是验收门槛命令，依赖前先用 `which` 确认可用。
-- 依赖管理：OHPM（`oh-package.json5` → `oh_modules/`）；测试框架 hypium + hamock。
+- DevEco Studio 26.0.0.851 安装在 `D:\Program Files\Huawei\DevEco Studio`。**没有**独立 `devecocli` CLI；`codelinter` 只有 IDE 内插件形态（Code Linter 工具窗口），无独立 CLI —— 设计文档中的 `devecocli check arkts` / `devecocli build` 在本机不可用，以 hvigorw 构建为准。
+- 命令行构建（Git Bash，已验证可产出 `entry/build/default/outputs/default/entry-default-unsigned.hap`）：
+
+  ```bash
+  export DEVECO_SDK_HOME="D:\Program Files\Huawei\DevEco Studio\sdk"
+  export JAVA_HOME="D:\Program Files\Huawei\DevEco Studio\jbr"
+  export PATH="/d/Program Files/Huawei/DevEco Studio/jbr/bin:$PATH"
+  "/d/Program Files/Huawei/DevEco Studio/tools/hvigor/bin/hvigorw.bat" \
+    assembleHap --mode module -p product=default -p buildMode=debug --no-daemon
+  ```
+
+  两个坑：hvigor 的 `PackageHap` 直接 spawn 裸 `java`，只认 PATH 不认 `JAVA_HOME`，所以两个变量都要设；`DEVECO_SDK_HOME` 未持久化到系统环境变量，跨会话需重新 export。
+- 产物为**未签名** HAP；调试签名与真机安装通过 DevEco Studio 自动签名（File > Project Structure > Signing Configs）。
+- 依赖管理：OHPM（`oh-package.json5` → `oh_modules/`）；测试框架 hypium + hamock（单测命令在 M1 编写首批测试时用实际 hvigor 任务名固化，不猜测）。
 - Lint 规则：`code-linter.json5`（`@performance/recommended` + `@typescript-eslint/recommended` + 安全规则，只查 `*.ets`，排除 test/mock/build）。
 - SDK：targetSdkVersion 26.0.0，compatibleSdkVersion 6.1.1(24)，runtimeOS HarmonyOS。
 - **真机硬门槛**：涉及相机、相册、权限、大图、上传、后台恢复的功能，必须真机验证（当前设备：HUAWEI MatePad Air，HarmonyOS 7.0）。编译通过或 Previewer 正常不能代替真机验证。
