@@ -1,0 +1,29 @@
+{
+  "routerMap": [
+    {
+      "buildFunction": "capturePageBuilder",
+      "name": "CapturePage",
+      "pageSourceFile": "src/main/ets/pages/CapturePage.ets"
+    },
+    {
+      "buildFunction": "cropPageBuilder",
+      "name": "CropPage",
+      "pageSourceFile": "src/main/ets/pages/CropPage.ets"
+    },
+    {
+      "buildFunction": "processingPageBuilder",
+      "name": "ProcessingPage",
+      "pageSourceFile": "src/main/ets/pages/ProcessingPage.ets"
+    },
+    {
+      "buildFunction": "resultPageBuilder",
+      "name": "ResultPage",
+      "pageSourceFile": "src/main/ets/pages/ResultPage.ets"
+    },
+    {
+      "buildFunction": "mistakeDetailPageBuilder",
+      "name": "MistakeDetailPage",
+      "pageSourceFile": "src/main/ets/pages/MistakeDetailPage.ets"
+    }
+  ]
+}

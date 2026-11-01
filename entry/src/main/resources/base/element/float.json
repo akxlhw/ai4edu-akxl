@@ -1,8 +1,28 @@
 {
   "float": [
     {
-      "name": "page_text_font_size",
-      "value": "50fp"
+      "name": "font_size_title",
+      "value": "20fp"
+    },
+    {
+      "name": "font_size_body",
+      "value": "16fp"
+    },
+    {
+      "name": "font_size_caption",
+      "value": "14fp"
+    },
+    {
+      "name": "page_padding",
+      "value": "16vp"
+    },
+    {
+      "name": "radius_card",
+      "value": "12vp"
+    },
+    {
+      "name": "radius_badge",
+      "value": "8vp"
     }
   ]
 }

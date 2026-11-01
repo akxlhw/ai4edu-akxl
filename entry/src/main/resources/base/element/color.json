@@ -3,6 +3,38 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "status_correct",
+      "value": "#2E9E5B"
+    },
+    {
+      "name": "status_incorrect",
+      "value": "#E5484D"
+    },
+    {
+      "name": "status_unreadable",
+      "value": "#F5A623"
+    },
+    {
+      "name": "status_unsupported",
+      "value": "#9B9B9B"
+    },
+    {
+      "name": "cta_primary",
+      "value": "#007DFF"
+    },
+    {
+      "name": "text_primary",
+      "value": "#182431"
+    },
+    {
+      "name": "text_secondary",
+      "value": "#666666"
+    },
+    {
+      "name": "page_background",
+      "value": "#F1F3F5"
     }
   ]
 }

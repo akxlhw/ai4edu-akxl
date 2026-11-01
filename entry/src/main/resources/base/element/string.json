@@ -10,7 +10,51 @@
     },
     {
       "name": "EntryAbility_label",
-      "value": "label"
+      "value": "作业检查"
+    },
+    {
+      "name": "camera_permission_reason",
+      "value": "用于拍摄孩子的作业页面，进行识别与批改"
+    },
+    {
+      "name": "home_cta_check",
+      "value": "检查作业"
+    },
+    {
+      "name": "home_entry_mistake_book",
+      "value": "错题本"
+    },
+    {
+      "name": "home_entry_history",
+      "value": "历史"
+    },
+    {
+      "name": "home_coming_soon",
+      "value": "后续版本开放"
+    },
+    {
+      "name": "page_title_capture",
+      "value": "拍摄作业"
+    },
+    {
+      "name": "page_title_crop",
+      "value": "调整范围"
+    },
+    {
+      "name": "page_title_processing",
+      "value": "正在检查"
+    },
+    {
+      "name": "page_title_result",
+      "value": "检查结果"
+    },
+    {
+      "name": "page_title_mistake_detail",
+      "value": "错题详情"
+    },
+    {
+      "name": "page_placeholder",
+      "value": "页面建设中（M3 实现）"
     }
   ]
 }
