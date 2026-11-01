@@ -44,6 +44,8 @@
 ### ArkTS 严格模式已知坑（实测踩过）
 
 - **UI 容器组件必须显式写括号**：`Row() { ... }`、`Column() { ... }`——省略括号的 `Row { ... }` 会被解析器拒绝，且引发**远离根因的大面积级联报错**（后续 @Builder 定义全部报"cannot be used in this place"）。排查此类级联时先找最早的 `';' expected` / `not callable` 错误。
+- **@Builder 参数是 build 时的值快照**，不建立状态依赖：需要随状态刷新的坐标/数值不能作为参数传入，必须在 @Builder 内部实时读状态计算（真机实测：手柄不跟框走的根因）。
+- 自定义组件 prop 命名避开组件保留属性（如 `aspectRatio` 会与 CustomComponent 基类冲突）。
 - 对象字面量只能用于有明确声明类型的场景；`Record` 字面量赋值会被拒（`arkts-no-untyped-obj-literals`），传参用 `Map` 或具名类。
 - `@kit.PerformanceKit` 在本 SDK 无映射，`hilog` 用 `import hilog from '@ohos.hilog'` 直导。
 - Camera Kit 用旧式命名：`getSupportedCameras()`、`CameraFormat.CAMERA_FORMAT_JPEG`、`QualityLevel.QUALITY_LEVEL_*`、`createSession<camera.PhotoSession>(camera.SceneMode.NORMAL_PHOTO)`（泛型）。

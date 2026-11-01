@@ -79,6 +79,46 @@
     {
       "name": "album_entry",
       "value": "从相册选择"
+    },
+    {
+      "name": "crop_hint",
+      "value": "已自动框选作业范围，可直接确认"
+    },
+    {
+      "name": "crop_confirm",
+      "value": "确认"
+    },
+    {
+      "name": "crop_adjust",
+      "value": "调整"
+    },
+    {
+      "name": "crop_reset",
+      "value": "重置"
+    },
+    {
+      "name": "retake",
+      "value": "重拍"
+    },
+    {
+      "name": "reselect",
+      "value": "重新选择"
+    },
+    {
+      "name": "ratio_free",
+      "value": "自由"
+    },
+    {
+      "name": "ratio_4_3",
+      "value": "4:3"
+    },
+    {
+      "name": "ratio_a4",
+      "value": "A4"
+    },
+    {
+      "name": "crop_warn",
+      "value": "可能裁掉题目，建议扩大范围"
     }
   ]
 }
