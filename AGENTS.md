@@ -41,7 +41,8 @@
 
   两个坑：hvigor 的 `PackageHap` 直接 spawn 裸 `java`，只认 PATH 不认 `JAVA_HOME`，所以两个变量都要设；`DEVECO_SDK_HOME` 未持久化到系统环境变量，跨会话需重新 export。
 - 产物为**未签名** HAP；调试签名与真机安装通过 DevEco Studio 自动签名（File > Project Structure > Signing Configs）。
-- 依赖管理：OHPM（`oh-package.json5` → `oh_modules/`）；测试框架 hypium + hamock（单测命令在 M1 编写首批测试时用实际 hvigor 任务名固化，不猜测）。
+- 依赖管理：OHPM（`oh-package.json5` → `oh_modules/`）；测试框架 hypium + hamock。
+- 本地单测（`entry/src/test/`，已验证）：`hvigorw test --mode module -p module=entry@default --no-daemon`，结果文本在 `entry/.test/default/intermediates/test/coverage_data/test_result.txt`，HTML 报告在 `entry/.test/default/outputs/test/reports/`。真机仪器测试任务名为 `ohosTest`。新测试文件需在 `entry/src/test/List.test.ets` 的 `testsuite()` 中注册。
 - Lint 规则：`code-linter.json5`（`@performance/recommended` + `@typescript-eslint/recommended` + 安全规则，只查 `*.ets`，排除 test/mock/build）。
 - SDK：targetSdkVersion 26.0.0，compatibleSdkVersion 6.1.1(24)，runtimeOS HarmonyOS。
 - **真机硬门槛**：涉及相机、相册、权限、大图、上传、后台恢复的功能，必须真机验证（当前设备：HUAWEI MatePad Air，HarmonyOS 7.0）。编译通过或 Previewer 正常不能代替真机验证。

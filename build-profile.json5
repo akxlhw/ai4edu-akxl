@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\Administrator\\.ohos\\config\\default_ai4edu-akxl_12_Bo05hDWVkCc98UsfBleG5zLHksqi7DiitdcwBe4o=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001AC851481831C33532BF08186DCF449B5D7B1D83F72459BF3C190C5C3AF297DCC1A51CF0BE2AA1",
+          "profile": "C:\\Users\\Administrator\\.ohos\\config\\default_ai4edu-akxl_12_Bo05hDWVkCc98UsfBleG5zLHksqi7DiitdcwBe4o=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\Administrator\\.ohos\\config\\default_ai4edu-akxl_12_Bo05hDWVkCc98UsfBleG5zLHksqi7DiitdcwBe4o=.p12",
+          "storePassword": "0000001A8BBA2B7C9DD4E871CE59EB1B88B864BBA5D713766A450B6BFF79994641477C5F332CA144E33D"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
