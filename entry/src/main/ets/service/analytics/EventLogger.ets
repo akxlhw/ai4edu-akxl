@@ -1,4 +1,4 @@
-import { hilog } from '@kit.PerformanceKit';
+import hilog from '@ohos.hilog';
 
 /**
  * 核心漏斗埋点事件（设计第 9 节，UX-U15）。
@@ -31,14 +31,12 @@ export class EventLogger {
   private static readonly DOMAIN = 0x0000;
   private static readonly TAG = 'homework_events';
 
-  static log(event: AnalyticsEvent, params: Record<string, string>): void {
-    const now = new Date();
-    const payload: Record<string, string> = { ts: now.toISOString() };
-    const keys = Object.keys(params);
-    for (let i = 0; i < keys.length; i++) {
-      payload[keys[i]] = params[keys[i]];
-    }
-    hilog.info(EventLogger.DOMAIN, EventLogger.TAG, '%{public}s %{public}s',
-      event, JSON.stringify(payload));
+  static log(event: AnalyticsEvent, params: Map<string, string>): void {
+    let payload = '{"ts":"' + new Date().toISOString() + '"';
+    params.forEach((value: string, key: string) => {
+      payload += ',"' + key + '":"' + value + '"';
+    });
+    payload += '}';
+    hilog.info(EventLogger.DOMAIN, EventLogger.TAG, '%{public}s %{public}s', event, payload);
   }
 }
